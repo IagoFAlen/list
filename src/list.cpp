@@ -64,6 +64,61 @@ bool ds_list::pop(LIST_INFO* listInfo) {
     return true;
 }
 
+void ds_list::update_block_index(BLOCK* list){
+    list->index--;
+
+    if(list->next){
+        return update_block_index(list->next);
+    }
+    
+}
+
+void ds_list::erase_block(LIST_INFO* listInfo, BLOCK* erase){
+    cout << "POP ->\tA[" << erase->index << "]: " << erase->value << endl;
+
+    if(erase->previous)
+        erase->previous->next = erase->next;
+    else
+        listInfo->list = erase->next;
+    
+    if(erase->next)
+        erase->next->previous = erase->previous;
+    else
+        listInfo->lastBlock = erase->previous;
+
+    erase->next = NULL;
+    erase->previous = NULL;
+    
+    listInfo->size--;
+
+    delete erase;
+}
+
+bool ds_list::pop_by_index(LIST_INFO* listInfo, int index){
+    for(BLOCK* list = listInfo->list; list != NULL; list = list->next){
+        if(list->index == index){
+            BLOCK* erase = list;
+            
+            erase_block(listInfo, erase);
+            update_block_index(list);
+
+            return true;
+        }
+    }
+
+    return false;
+}
+
+void ds_list::pop_by_value(LIST_INFO* listInfo, int value){
+    for(BLOCK* list = listInfo->list; list != NULL; list = list->next){
+        if(list->value == value){
+            BLOCK* erase = list;
+            
+            erase_block(listInfo, erase);
+            update_block_index(list);
+        }
+    }
+}
 
 void ds_list::show_block(BLOCK* list){
     cout << "\tA[" << list->index << "]: " << list->value << endl;
