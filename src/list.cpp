@@ -65,10 +65,11 @@ bool ds_list::pop(LIST_INFO* listInfo) {
 }
 
 void ds_list::update_block_index(BLOCK* list){
+    list->index--;
     if(list->next){
-        list->next->index--;
         return update_block_index(list->next);
-    }    
+    }
+
 }
 
 void ds_list::erase_block(LIST_INFO* listInfo, BLOCK* erase){
@@ -149,6 +150,22 @@ bool ds_list::empty(LIST_INFO* listInfo){
     }
 
     return true;
+}
+
+int ds_list::get_value_by_index(BLOCK* list, int index){
+
+    int value;
+    if(list != NULL){
+        if(list->index == index){
+            value = list->value;
+            return value;
+        }
+
+        if(list->next)
+            return get_value_by_index(list->next, index);
+    }
+
+    return value;
 }
 
 void ds_list::show_block(BLOCK* list){
