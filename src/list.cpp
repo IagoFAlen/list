@@ -138,6 +138,18 @@ bool ds_list::pop_by_value(LIST_INFO* listInfo, BLOCK* list, int value) {
     return pop_by_value(listInfo, list->next, value) || removed;
 }
 
+bool ds_list::empty(LIST_INFO* listInfo){
+    if(is_empty(listInfo)){
+        cout << "EMPTY LIST ALREADY" << endl;
+        return false;
+    }
+
+    while(!is_empty(listInfo)){
+        pop(listInfo);
+    }
+
+    return true;
+}
 
 void ds_list::show_block(BLOCK* list){
     cout << "\tA[" << list->index << "]: " << list->value << endl;

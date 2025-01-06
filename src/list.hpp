@@ -52,6 +52,7 @@ namespace ds_list {
     void update_block_index(BLOCK* list);
     bool pop_by_index(LIST_INFO* listInfo, int index);
     bool pop_by_value(LIST_INFO* listInfo, BLOCK* list, int value);
+    bool empty(LIST_INFO* listInfo);
     void show_block(BLOCK* list);
     void show(LIST_INFO* listInfo);
 
