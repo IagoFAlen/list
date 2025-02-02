@@ -4,7 +4,7 @@
 namespace ds_list {
 
     typedef struct block {
-        int value;
+        double value;
         int index;
 
         block* next;
@@ -46,14 +46,14 @@ namespace ds_list {
     } LIST_INFO;
 
     bool is_empty(LIST_INFO* listInfo);
-    bool push(LIST_INFO* listInfo, int value);
+    bool push(LIST_INFO* listInfo, double value);
     bool pop(LIST_INFO* listInfo);
     void erase_block(LIST_INFO* listInfo, BLOCK* erase);
     void update_block_index(BLOCK* list);
     bool pop_by_index(LIST_INFO* listInfo, int index);
-    bool pop_by_value(LIST_INFO* listInfo, BLOCK* list, int value);
+    bool pop_by_value(LIST_INFO* listInfo, BLOCK* list, double value);
     bool empty(LIST_INFO* listInfo);
-    int get_value_by_index(BLOCK* list, int index);
+    double get_value_by_index(BLOCK* list, int index);
     void show_block(BLOCK* list);
     void show(LIST_INFO* listInfo);
 

@@ -13,7 +13,7 @@ bool ds_list::is_empty(LIST_INFO* listInfo){
     return false;
 }
 
-bool ds_list::push(LIST_INFO* listInfo, int value){
+bool ds_list::push(LIST_INFO* listInfo, double value){
     BLOCK* list = new BLOCK();
 
     if(listInfo->list == NULL){
@@ -116,7 +116,7 @@ bool ds_list::pop_by_index(LIST_INFO* listInfo, int index){
     return false;
 }
 
-bool ds_list::pop_by_value(LIST_INFO* listInfo, BLOCK* list, int value) {
+bool ds_list::pop_by_value(LIST_INFO* listInfo, BLOCK* list, double value) {
     if (list == nullptr) {
         return false;
     }
@@ -152,9 +152,9 @@ bool ds_list::empty(LIST_INFO* listInfo){
     return true;
 }
 
-int ds_list::get_value_by_index(BLOCK* list, int index){
+double ds_list::get_value_by_index(BLOCK* list, int index){
 
-    int value;
+    double value;
     if(list != NULL){
         if(list->index == index){
             value = list->value;
